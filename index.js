@@ -16,7 +16,8 @@ router.get("/", (req, res) => {
       const limitNumber = Number(limit);
       const startIndex = (pageNumber - 1) * limitNumber;
       const endIndex = startIndex + limitNumber;
-      res.status(200).send(amiibo.slice(startIndex, endIndex));
+      const addedIds = amiibo.map((item, index) => ({ ...item, id: index }));
+      res.status(200).send(addedIds.slice(startIndex, endIndex));
     })
     .catch((err) => res.status(500).send(err));
 });
