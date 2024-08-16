@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const axios = require("axios");
+const port = process.env.PORT || 3001;
 
 router.get("/", (req, res) => {
   const { page = 1, limit = 10 } = req.query;
@@ -22,6 +23,6 @@ router.get("/", (req, res) => {
 
 app.use(router);
 
-app.listen(3001, async () => {
+app.listen(port, async () => {
   console.log(`Server is running`);
 });
